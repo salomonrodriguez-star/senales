@@ -598,6 +598,10 @@
       data.fecha_envio = new Date().toLocaleString("es-MX", { timeZone: "America/Mexico_City" });
       data.origen = "Landing Señales";
 
+      // Abrir la ventana de WhatsApp INMEDIATAMENTE (dentro del gesto del usuario)
+      // para evitar que el navegador bloquee el popup tras el await del fetch.
+      const whatsappWindow = window.open("about:blank", "_blank");
+
       submitBtn.disabled = true;
       submitBtn.textContent = "Enviando...";
       statusEl.className = "form__status";
@@ -621,11 +625,16 @@
       statusEl.className = "form__status is-success";
       statusEl.textContent = "¡Listo! Abriendo WhatsApp con tu información...";
 
-      setTimeout(() => {
-        window.open(whatsappUrl, "_blank");
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Enviar y abrir WhatsApp";
-      }, 600);
+      // Redirigir la ventana ya abierta (no la bloquea el navegador)
+      if (whatsappWindow && !whatsappWindow.closed) {
+        whatsappWindow.location.href = whatsappUrl;
+      } else {
+        // Fallback: si el popup fue bloqueado, redirigir la pestaña actual
+        window.location.href = whatsappUrl;
+      }
+
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Enviar y abrir WhatsApp";
     });
 
     function construirMensajeWhatsApp(data) {
