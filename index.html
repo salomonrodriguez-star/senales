@@ -74,9 +74,8 @@
     .header { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.95); backdrop-filter: saturate(180%) blur(8px); border-bottom: 1px solid var(--gray-100); }
     .header__inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; }
     .header__logo { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 20px; letter-spacing: 1px; }
-    .logo-mark { width: 32px; height: 32px; border-radius: 8px; background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%); position: relative; }
-    .logo-mark::after { content: ''; position: absolute; inset: 8px; background: var(--yellow); border-radius: 50%; }
-    .logo-text { color: var(--black); }
+    .logo-img { height: 44px; width: auto; display: block; }
+    .footer__brand .logo-img { height: 50px; filter: brightness(0) invert(1); opacity: 0.95; }
     .header__nav { display: flex; align-items: center; gap: 28px; }
     .header__nav a { font-weight: 600; font-size: 14px; color: var(--gray-700); transition: color var(--transition); }
     .header__nav a:hover { color: var(--green-dark); }
@@ -216,7 +215,6 @@
     .footer { background: var(--black); color: var(--gray-300); padding-top: 60px; }
     .footer__inner { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; padding-bottom: 50px; }
     .footer__brand p { margin-top: 14px; font-size: 14px; max-width: 320px; }
-    .footer__brand .logo-text { color: var(--white); }
     .footer__links h4 { font-size: 13px; text-transform: uppercase; letter-spacing: 1.2px; color: var(--white); margin-bottom: 14px; }
     .footer__links a { display: block; font-size: 14.5px; color: var(--gray-300); margin-bottom: 10px; transition: color var(--transition); }
     .footer__links a:hover { color: var(--green); }
@@ -264,9 +262,8 @@
 
   <header class="header">
     <div class="container header__inner">
-      <a href="#" class="header__logo">
-        <span class="logo-mark"></span>
-        <span class="logo-text">SEMEX</span>
+      <a href="#" class="header__logo" aria-label="Tienda SEMEX">
+        <img src="images/logo-tienda-semex.png" alt="Tienda SEMEX" class="logo-img" />
       </a>
       <nav class="header__nav">
         <a href="#producto">Tipos de señal</a>
@@ -554,7 +551,7 @@
   <footer class="footer">
     <div class="container footer__inner">
       <div class="footer__brand">
-        <div class="header__logo"><span class="logo-mark"></span><span class="logo-text">SEMEX</span></div>
+        <div class="header__logo"><img src="images/logo-tienda-semex.png" alt="Tienda SEMEX" class="logo-img" /></div>
         <p>Fabricante mexicano de señalización vial, semaforización y productos para vialidades. +30 años de experiencia.</p>
       </div>
       <div class="footer__links">
